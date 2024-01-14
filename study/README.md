@@ -540,3 +540,33 @@ OS가 로드될 때..
 + 공유락, 배타락, 트랜잭션 격리수준
 
 + ON DELETE CASCADE, ON DELETE SET NULL, ON DELETE SET DEFAULT
+
+---
+
+[ 4주차 꼬리질문 & 참고자료 ]
+
+**MMU** 
+→ 가상 메모리를 내부 물리 메모리로 바꾸는 CPU 내부의 장치 ( 주소 변환 장비가 캐싱되어 있음 )
+
+**TLB ( CPU 와 메모리 사이에 있는 캐시 ) ← MMU.. Paging / Segment**
+
+**CA는 어떻게 만들어지는가?**
+
+- Certificate Authority ( CA )
+    - OS 개발 회사, Protocol 개발 회사.. 평가 해서
+    각 회사가 인정한 CA
+    - 어떤 CA에서 발급한 인증서를 발급받을까?
+    - **거의 보안에 의미가 없는 CA도 있다. ( 믿을 수 없는 CA )**
+    
+
+**흐름 제어, 오류 제어, 혼잡 제어**
+
+- **신뢰성을 확보 / 연결 지향, 신뢰성 있는 데이터 전송**
+
+**containerd libs vs Docker**
+
+- **기존 도커의 차이..**
+
+Java Pointer vs Reference ( feat. Heap영역 GC → hashCode Reference Table 관리 like MMU TLB )
+
+hashCode Reference
