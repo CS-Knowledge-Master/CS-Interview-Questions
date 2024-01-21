@@ -570,3 +570,120 @@ OS가 로드될 때..
 Java Pointer vs Reference ( feat. Heap영역 GC → hashCode Reference Table 관리 like MMU TLB )
 
 hashCode Reference
+
+---
+- **SSL Handshake**
+- **Client Hello**
+- **Server Hello**
+- SSL Handshake에서 대칭키와 비대칭키를 둘 다 사용하는 이유?
+    - 공개키에 맞는 비밀키를 찾는게 더 어렵다.
+    - **대칭키 : 암호화와 복호화가 같은 키로, 속도 측면에서 대칭키**
+    - **Server - Client 신뢰성 있는 데이터 전달을 위해서는
+    비대칭키를 이용한다.**
+    
+    **프로세스 / 스레드**
+    
+    - 멀티 프로세스 프로그래밍 : 오류 취약?
+    
+    - **멀티 스레드 프로그래밍을 하기 위한 원칙 4가지**
+        - **상호 배제 ( 세마포어 )**
+        - **Thread Local ( 스레드 자체의 저장소 )**
+            - **`ThreadLocal` : 이거 찾아봐야할 듯**
+            - **Synchronized, `Lazy Holder`**
+        - **원자적인 연산**
+        - **스레드의 호출에 신경쓰지 않게 코드를 짠다.**
+            - 어떤 식으로 짜야함?
+                - static 변수를 줄인다. 공유 변수를 줄이기
+    
+    - Class Loader
+        - `volatile`, `synchronized`
+    
+    - **인덱스 : 특정 키에 정렬하기 위해 설정,**
+    
+    **검색속도 / 메모리 공간, 추가적인 정렬 시간 듬.**
+    
+    - **언제 사용하는게 좋고, 언제 사용하지 않는게 좋을까?**
+        - 검색 : 조인 연산, 부등호 연산 - 정렬 필요할 때 인덱스 사용
+        - 삽입, 삭제 연산이 빈번할 때
+    
+    - **인덱스를 구현하는 방식 : B+ 트리에 대해 얘기해주세요.**
+        - B+ 트리는 리프노드에만 데이터를 가지고 있어서,
+        B+ 트리가 B 트리에 비해 데이터 접근이 빠릅니다.
+        - B+ 트리는 리프 노드에 대한 연결 리스트 → 순회가 빠르다.
+        - B 트리는 리프 노드가 아닌 데이터들이 많이 있다. 이에 대한 순회가 문제가 생김 → B+ 트리를 만듬.
+    
+    - **클러스터링 인덱스, 비 클러스터링 인덱스**에 대해 이야기 해주세요.
+        - 비 클러스터링 인덱스를 사용하는 이유는?
+            - 삽입, 삭제가 클러스터형보다 빠르다.
+        - 검색 속도는 클러스터링 인덱스가 빠름
+    
+     **TCP vs UDP**
+    
+    - **TCP 3-way handshake : 연결 형성**
+    - **UDP : 연결 형성 없이 바로 데이터 보냄.**
+    - **연결 종료를 위함 : TCP 프로토콜에서 연결 끊을 때 / 패킷이 늦게 올 경우 대비.. 디폴트 여유 시간 = MSL( Maximum Segment Lifetime ) * 2배 / 대기 시간 : 패킷이 네트워크를 떠돌 수 있는 시간.**
+    - **Transport Layer**
+        - Host 간의 논리적인 통신을 책임진다.
+    - 각 계층이 맡은 어디까지 데이터 전달을 담당하냐.. ( Transport / Network / Data Link
+    - NAT : Network Adress Translation
+    
+    - **TCP 흐름 제어, 혼잡 제어, 오류 제어 하는 방법**
+        - 흐름 제어 : 송신 측, 수신 측 버퍼 처리 윈도우 크기 조절
+        - [오류 제어 :](https://gyoogle.dev/blog/computer-science/network/%ED%9D%90%EB%A6%84%EC%A0%9C%EC%96%B4%20&%20%ED%98%BC%EC%9E%A1%EC%A0%9C%EC%96%B4.html)
+        - **혼잡 제어 : 네트워크 패킷 수 조절**
+            - **Windows 유동적으로 조저하기**
+            - **Slow Start, Reno, AIMD**
+    - [https://gyoogle.dev/blog/computer-science/network/흐름제어 & 혼잡제어.html](https://gyoogle.dev/blog/computer-science/network/%ED%9D%90%EB%A6%84%EC%A0%9C%EC%96%B4%20&%20%ED%98%BC%EC%9E%A1%EC%A0%9C%EC%96%B4.html)
+    
+    - 스레드 간 컨텍스트 스위칭
+        - **페이지 안에 스레드가 같이 있어서, 따로 페이지를 참조할 필요가 없다.**
+    
+    - 스위칭을 순서를 결정하는 방법
+    
+    **< CPU Scheduling Algorithm >**
+    
+    - **비선점형 스케줄링**
+        - **SJF**
+        - **FIFO**
+        - **HRN**
+    
+    - **선점형 스케줄링**
+        - **SRT**
+        - **Round-Robin**
+        - **MLQ**
+        - **MLFQ - 여러 개의 큐로 구성되며, 각각 다른 우선순위(Priority Level) 배정**
+        - 트랜잭션을 적용할 때 주의해야할 점?
+        - REPEATABLE READ - Transaction ID… ( MVCC )
+            
+            자기보다 먼저 실행된. . . 데이터 추가됐을 때 . . .
+            
+        - READ COMMITED - 커밋된 테이블만 Non-Repeatable Read ( 중간에 다른 트랜잭션이 커밋할 때 )
+        - READ UNCOMMITED - 커밋되지 않은 데이터도 읽는다.
+    
+    - ACID를 구현하기 위해 DBMS가 지원하는 기능
+        - Atomicity : Commit / Rollback
+        - Consistency : 제약조건
+        - Isolation : Isolation Level
+        - Durability :
+    
+    - 동기 블로킹 예시
+        - 커맨드 입력
+    - 동기 논블로킹 예시
+        - 로딩 바
+    - 비동기 논블로킹 예시
+        - 파일 다운로드
+    
+    - 동기 / 비동기
+        - **await, promise**
+        - Java : **NIO Library**
+    
+    - 이벤트 루프
+        - 이벤트 : 사용자의 클릭,
+        - EventListener → 동기
+    
+    - 코루틴 : **코틀린에서 `비동기 작업`을 수월하게 할 수 있는 라이브러리**
+    - **Java - Virtual Thread**
+    - [https://inpa.tistory.com/entry/🔄-자바스크립트-이벤트-루프-구조-동작-원리](https://inpa.tistory.com/entry/%F0%9F%94%84-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84-%EA%B5%AC%EC%A1%B0-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC)
+    - JS / AOS / Java 에서 동기, 비동기 / 블로킹 논블로킹을 어떻게 다루는지 알아오기
+    
+    - 정규화를 안했을 때 이상 현상이 발생하는 것이 문제이다.
