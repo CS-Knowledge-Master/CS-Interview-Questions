@@ -687,3 +687,142 @@ hashCode Reference
     - JS / AOS / Java 에서 동기, 비동기 / 블로킹 논블로킹을 어떻게 다루는지 알아오기
     
     - 정규화를 안했을 때 이상 현상이 발생하는 것이 문제이다.
+
+---
+6주차
+# 
+
+### **Query Strings vs Path Variables**
+
+**URI vs URL**
+
+- **URI : 웹 상의 리소스의 자원을 특정하기 위한 식별자**
+- **URL : 해당 리소스의 위치를 나타내는 표현**
+
+**REST API**
+
+- 자원을 **RESTful**하게 관리한다는 의미에서
+URL에 자원의 동작이 아니라,
+HTTP Method로 동작을 나타낸다.
+- 자원의 표현에 의한 상태 전달
+- HTTP URI를 통해 자원의 위치를 명시하고, HTTP Method로 동작을 정의
+- API가 일관성이 없어서, 일관성이 있게 하려고 쓴다.
+
+### 멱등성
+
+- 여러 번의 동작을 가했을 떄, 똑같은 결과가 나오는 것
+    - **GET, POST, PUT**
+    - **PATCH, DELETE**
+
+### POST는 서버에 대한 상태를 변화시키는 것이기 때문에, 캐싱 X.
+
+- *HTTPS*
+
+세마포어 S.. 지정해서,
+
+그 숫자만큼 실행이 될 수 있게끔.
+
+### Binary Semaphore vs Mutex
+
+- Mutex : 하나의 프로세스가 lock을 가졌으면, 자기가 unLock
+- Semaphore : 하나의 프로세스가 lock을 가지면, 다른 프로세스가 signal() 을
+
+### Mutex : 우선순위 상속 속성
+
+- ( A, B, C ) ⇒ 우선순위 역전
+
+### Sempahore
+
+- 
+
+C가 임계영역 진입.. 작업을 계속 하고 있었다면,
+
+A → C 의 Lock을 기다려..
+
+B가 계속 실행된다,,
+
+우선순위 역전?
+
+A는 Lock을 
+
+작업을 하냐??
+
+우선순위 역전..
+
+A > B 
+
+B가 먼저 실행 → A가 임계구역에 대한 요청을 하면, B가 
+
+H, M, L
+
+우선순위의 역전? 
+
+**공유 변수 → 접근할 수 있는 영역… ( 임계 영역 )**
+
+---
+
+### Monitor
+
+***critical section***
+
+- 하나의 프로세스 또는 스레드만이 진입해서 사용할 수 있는 영역
+
+### Driving Table vs Driven Table
+
+- Index
+
+- INNER JOIN 을 맨 처음 해야..
+
+- 최대한 중복을 줄여서..
+
+### 멀티 프로세스 프로그래밍 vs 멀티 쓰레드 프로그래밍
+
+### **Interrupt vs System Call**
+
+
+---
+
+<컴퓨터구조>
+컴퓨터의 구성 요소는?
+hdd와 ssd의 차이는?
+시스템 버스란?
+캐시란?
+레지스터란?
+CPU의 구조는? 동작과정은?
+명령어의 처리 과정은?
+인터럽트란?
+GPU란? CPU와의 차이는?
+고정소수점과 부동소수점의 차이는?
+병렬처리 - 파이프라이닝이란?
+병렬처리 - 슈퍼스칼라란?
+메모리 계층의 구조는 어떻게 되어있는가?
+RISC란? CISC와의 차이점은?
+컴파일러란? 인터프리터란?
+메모리의 구조는? (데이터, 스택, 힙~)
+BASE64란?
+Big-Endian과 Little-Endian의 차이는?
+RAID란?
+DMA란?
+버퍼 오버플로우란?
+
+ttps://github.com/Prev/CSE-Summary/tree/master/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0
+
+---
+추가 질문
+
+tcp, udp에서의 checksum의 특징 및 차이에 대해 설명
+tcp/ip에 대해 설명
+tcp flag 종류 설명
+OSI 7계층을 왜 나눴는지 설명
+tcp의 nagle 알고리즘
+
+—
+네트워크
+
+비관적 락과 낙관적 락에 대해
+
+— 데이터베이스
+
+좀비 프로세스와 데몬 프로세스
+
+— 운영체제
